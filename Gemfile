@@ -1,10 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '>= 3.0.5'
+gem 'mongoid', '>= 2.0.0.rc.8'
+gem 'bson_ext', '>= 1.2.4'
+gem 'devise', '>= 1.2.rc2' 
+
+gem 'rspec-rails', '>= 2.5', :group => [:development, :test]
+gem 'capybara', :group => :test
+gem 'database_cleaner', :group => :test
+gem 'mongoid-rspec', :group => :test
+gem 'factory_girl_rails', :group => :test
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 
 # Use unicorn as the web server
 # gem 'unicorn'

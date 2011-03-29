@@ -3,8 +3,6 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-#    @user = User.new(:username => "test", :name => "Test", :email => "test@test.com",
-#      :password => "please", :password_confirmation => "please")
     @user = Factory.build(:valid_user)
   end
 

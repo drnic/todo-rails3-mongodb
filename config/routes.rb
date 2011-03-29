@@ -2,7 +2,10 @@ Todo::Application.routes.draw do
 
   root :to => "home#index"
   devise_for :users
-  resources :users, :only => :show
+  resources :users do
+    resources :lists, :controller => 'users/lists'
+  end
+  resources :lists
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

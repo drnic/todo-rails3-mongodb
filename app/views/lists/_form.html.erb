@@ -1,21 +1,32 @@
-<%= form_for(@list) do |f| %>
-  <% if @list.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
 
-      <ul>
-      <% @list.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="group">
+    <%= f.label :_type, t("activerecord.attributes.list._type", :default => " type"), :class => :label %>
+    <%= f.text_field :_type, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="group">
+    <%= f.label :_id, t("activerecord.attributes.list._id", :default => ""), :class => :label %>
+    <%= f.text_field :_id, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="group">
+    <%= f.label :name, t("activerecord.attributes.list.name", :default => "Name"), :class => :label %>
+    <%= f.text_field :name, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
   </div>
-<% end %>
+
+  <div class="group">
+    <%= f.label :user_id, t("activerecord.attributes.list.user_id", :default => "User"), :class => :label %>
+    <%= f.text_field :user_id, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>
+  <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+	<%= link_to t("web-app-theme.cancel", :default => "Cancel"), lists_path, :class => "text_button_padding link_button" %>
+</div>

@@ -19,6 +19,9 @@
       <div id="main-navigation">
         <ul class="wat-cf">
           <li class="<%= (params[:controller] == "home" ? "first active" : "first") %>"><%= link_to 'Home', root_path %></li>
+          <% if user_signed_in? %>
+            <li class="<%= (params[:controller] == "users/lists" ? "active" : nil) %>"><%= link_to 'My Lists', user_lists_path(current_user) %></li>
+          <% end %>
           <li class="<%= (params[:controller] == "lists" ? "active" : nil) %>"><%= link_to 'Lists', lists_path %></li>
         </ul>
       </div>

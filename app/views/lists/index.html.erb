@@ -10,23 +10,15 @@
     <div class="inner">
       <table class="table">
         <tr>             
-          <th class="first">ID</th>
-                    <th>
-            <%= t("activerecord.attributes.list._type", :default => t("activerecord.labels._type", :default => "_type")) %>
+          <th class="first">
+            <%= t("activerecord.attributes.list.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @lists.each do |list| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <td>
-            <%= list.id %>
-          </td>
-                    <td>
-            <%= link_to list._type, list_path(list) %>
-          </td>
-                    <td>
-            <%= list.created_at %>
+            <%= link_to list.name, list_path(list) %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", list_path(list) %> |
@@ -39,7 +31,6 @@
       <div class="actions-bar wat-cf">
         <div class="actions">
         </div>
-        
       </div>
     </div>
   </div>

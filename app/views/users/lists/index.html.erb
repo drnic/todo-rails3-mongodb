@@ -1,5 +1,14 @@
-<h3>My lists</h3>
-
-<% @lists.each do |list| %>
- <p><%= list.name %></p>
-<% end %>
+<div id="block-lists" class="block">
+  <div class="content">
+    <h2 class="title">My Lists</h2>
+    <div class="inner">
+      <ul class="list">
+        <% @lists.each do |list| %>
+          <div class="item">
+            <p><%= link_to list.name, list_path(list) %></p>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,28 @@
-<h2>Forgot your password?</h2>
+<h1>Todo</h1>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
-
-  <p><%= f.submit "Send me reset password instructions" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div id="block-forgot-password" class="block">
+  <h2>Forgot your password?</h2>
+  <div class="content">
+    <div class="flash">
+      <% resource.errors.full_messages.each do |message| %>
+        <div class="message alert">
+          <p><%= message %></p>
+        </div>
+      <% end %> 
+    </div>
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form' }) do |f| %>
+      <div class="group">
+        <%= f.label :email, :class => 'label' %>
+        <%= f.email_field :email, :class => 'text_field' %>
+        <span class="description">Ex. test@example.com</span> 
+      </div>
+      <div class="group nav-form wat-cf">
+        <button class="button" type="submit">
+          <%= image_tag "web-app-theme/icons/tick.png" %>
+          Send me reset password instructions
+        </button>
+      </div>
+    <% end %>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+</div>

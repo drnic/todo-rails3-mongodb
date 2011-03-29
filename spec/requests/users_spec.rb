@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "signing up" do
+feature "signing up", :js => true do
 
   def sign_in_as(user, password)
     visit new_user_session_path

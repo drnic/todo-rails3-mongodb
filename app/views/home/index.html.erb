@@ -1,6 +1,10 @@
-<h3>Home</h3>
-
-<% @users.each do |user| %>
-  <p><%= image_tag user.avatar_url(:thumb) if user.avatar? %></p>
-  <p>User: <%= link_to user.username, user %></p>
-<% end %>
+<div id="block-text" class="block">
+  <div class="content">
+    <h2 class="title">Home</h2>
+    <div class="inner">
+      <p class="first">
+        Please use the navigation bar above to move around the site.
+      </p>
+    </div>
+  </div>
+</div>

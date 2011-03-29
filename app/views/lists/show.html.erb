@@ -1,10 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", lists_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_list_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", list_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.list._type", :default => t("activerecord.labels._type", :default => " type")) %>:</b>
+          <%= @list._type %>
+        </p>
 
-<p>
-  <b>Name:</b>
-  <%= @list.name %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.list._id", :default => t("activerecord.labels._id", :default => "")) %>:</b>
+          <%= @list._id %>
+        </p>
 
+        <p>
+          <b><%= t("activerecord.attributes.list.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @list.name %>
+        </p>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+        <p>
+          <b><%= t("activerecord.attributes.list.user_id", :default => t("activerecord.labels.user_id", :default => "User")) %>:</b>
+          <%= @list.user_id %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_list_path(@list), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), list_path(@list), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

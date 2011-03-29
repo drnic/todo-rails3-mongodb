@@ -1,11 +1,16 @@
 <div id="block-lists" class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "Create a new list", new_user_list_path(current_user)  %></li>
+    </ul>
+  </div>          
   <div class="content">
     <h2 class="title">My Lists</h2>
     <div class="inner">
       <ul class="list">
         <% @lists.each do |list| %>
           <div class="item">
-            <p><%= link_to list.name, list_path(list) %></p>
+            <p><%= link_to list.name, user_list_path(current_user, list) %></p>
           </div>
         <% end %>
       </ul>

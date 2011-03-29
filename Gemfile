@@ -3,10 +3,13 @@ source 'http://rubygems.org'
 gem 'rails', '>= 3.0.5'
 gem 'mongoid', '>= 2.0.0.rc.8'
 gem 'bson_ext', '>= 1.2.4'
-gem 'devise', '>= 1.2.rc2' 
+gem 'devise', '>= 1.2.rc2'
+gem 'responders', '>= 0.6.2'
+gem 'rmagick'
+gem 'carrierwave', '>= 0.5.3' 
 
 gem 'rspec-rails', '>= 2.5', :group => [:development, :test]
-gem 'capybara', :group => :test
+gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git', :group => :test
 gem 'database_cleaner', :group => :test
 gem 'mongoid-rspec', :group => :test
 gem 'factory_girl_rails', :group => :test

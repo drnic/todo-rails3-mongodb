@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @users = User.all
+    respond_with(@users = User.all)
   end
 
 end

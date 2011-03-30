@@ -6,6 +6,7 @@ Todo::Application.routes.draw do
     resources :lists, :controller => 'users/lists'
   end
   resources :lists
+  resources :tasks, :only => :update
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

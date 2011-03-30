@@ -7,5 +7,8 @@ class List
   field :name, :type => String
   referenced_in :user
 
+  embeds_many :tasks
+  accepts_nested_attributes_for :tasks
+
   validates :name, :presence => true
 end

@@ -6,14 +6,26 @@
     </ul>
   </div>          
   <div class="content">
-    <div class="inner">
-      <p>
-        <b><%= t("activerecord.attributes.list.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
-        <%= @list.name %>
-      </p>
+      <h2 class="title"><%= @list.name %></h2>
+      <div id="tasks">
+       <p>huahuahua</p>
+      </div>
+      <div class="inner">
+        <ul class="list">
+          <% @list.tasks.each do |task| %>
+            <div class="left">
+                <%= check_box_tag task._id, true, checked = false   %>
+                <%= observe_field task._id, task_path(:task_id => task), :method => :put %> 
+            </div>
+            <div class="item">
+              <p><%= task.name %></p>
+              <%= button_to 'Done', task_path(:task_id => task), :method => :put, :remote => true %>
+            </div>
+          <% end %>
+        </ul>
       <div class="wat-cf">
-        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_user_list_path(current_user, @list), :class => "button" %> 
-        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), user_list_path(current_user, @list), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "Edit") + " Edit", edit_user_list_path(current_user, @list), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "Delete") + " Delete", user_list_path(current_user, @list), :method => "delete", :class => "button", :confirm => "Are you sur" %>
       </div>      
     </div>
   </div>

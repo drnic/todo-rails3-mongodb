@@ -14,6 +14,7 @@ class Users::ListsController < ApplicationController
 
   def new
     @list = List.new
+    @list.tasks.build
     respond_with(current_user, @list)
   end
 

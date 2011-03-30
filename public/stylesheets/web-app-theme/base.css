@@ -408,3 +408,34 @@ button.button:active, a.button:active {
 .link_button{
   cursor: pointer;
 }
+
+#error_explanation {
+  text-align:left;
+  padding: 15px 15px 15px 15px;
+  border: 1px solid #fbb;
+  background-color: #fdd;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 8px;
+  margin: -7px;
+}
+
+#error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#error_explanation ul {
+  padding: 15px 5px 5px 45px;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

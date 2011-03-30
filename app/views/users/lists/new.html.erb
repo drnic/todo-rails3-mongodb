@@ -4,11 +4,12 @@
       <li class="first"><%= link_to "My Lists", user_lists_path(current_user)  %></li>
       <li class="active"><%= link_to "Create a new list", new_user_list_path(current_user) %></li>
     </ul>
-  </div>          
-  <div class="content">            
+  </div>
+  <div class="content">
+    <%= error_messages_for!(@list) %>
     <h2 class="title">Name your new list</h2>
     <div class="inner">
-      <%= form_for :list, :url => user_lists_path, :html => { :class => :form } do |f| -%>
+      <%= form_for @list, :url => user_lists_path, :html => { :class => :form } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
       <% end -%>
     </div>

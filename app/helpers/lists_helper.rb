@@ -1,5 +1,14 @@
 module ListsHelper
 
+  def add_to_new_task(form_builder)
+    link_to_function 'add child' do |page|
+      form_builder.fields_for :tasks, Task.new, :child_index => 'NEW_RECORD' do |f|
+        html = render(:partial => 'task', :locals => { :form => f })
+        page << "jQuery('#tasks').append('#{escape_javascript(html)}'.replace(/NEW_RECORD/g, new Date().getTime()))"
+      end
+    end
+  end
+
   def add_task_link(form_builder)
     link_to_function 'add a task' do |page|
       form_builder.fields_for :tasks, Task.new, :child_index => 'NEW_RECORD' do |f|

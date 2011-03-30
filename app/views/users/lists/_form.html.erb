@@ -6,11 +6,10 @@
 </div>
  
 <div id="tasks">
-  <h3>Tasks</h3>
-  <%= add_task_link(f) %>
-  <%= f.fields_for :tasks do |task_form| %>
-    <%= render :partial => 'task', :locals => { :form => task_form } %>
+  <%= f.fields_for :tasks do |builder| %>
+    <%= render :partial => 'task_fields', :locals => { :f => builder } %>
   <% end %>
+  <p><%= link_to_add_fields "Add a task", f, :tasks, :tester => true %></p>
 </div>
        
 <div class="group navform wat-cf">

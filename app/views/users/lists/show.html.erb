@@ -6,23 +6,16 @@
     </ul>
   </div>          
   <div class="content">
-      <h2 class="title"><%= @list.name %></h2>
-      <div id="tasks">
-       <p>huahuahua</p>
-      </div>
-      <div class="inner">
-        <ul class="list">
-          <% @list.tasks.each do |task| %>
-            <div class="left">
-                <%= check_box_tag task._id, true, checked = false   %>
-                <%= observe_field task._id, task_path(:task_id => task), :method => :put %> 
-            </div>
-            <div class="item">
-              <p><%= task.name %></p>
-              <%= button_to 'Done', task_path(:task_id => task), :method => :put, :remote => true %>
-            </div>
+    <h2 class="title"><%= @list.name %></h2>
+    <div class="inner">
+      <% @list.tasks.each do |task| %>
+        <p>
+          <%= form_for task, :url => task_path(:task_id => task), :remote => true do |f| %>
+            <%= f.check_box :done, :class => 'submittable' %>
+            <%= task.name %>
           <% end %>
-        </ul>
+        </p>
+      <% end %>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "Edit") + " Edit", edit_user_list_path(current_user, @list), :class => "button" %> 
         <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "Delete") + " Delete", user_list_path(current_user, @list), :method => "delete", :class => "button", :confirm => "Are you sur" %>

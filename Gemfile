@@ -7,6 +7,7 @@ gem 'devise', '>= 1.2.rc2'
 gem 'responders', '>= 0.6.2'
 gem 'rmagick'
 gem 'carrierwave', '>= 0.5.3' 
+gem 'jquery-rails', '>= 0.2.7'
 
 gem 'rspec-rails', '>= 2.5', :group => [:development, :test]
 gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git', :group => :test

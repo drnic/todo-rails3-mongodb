@@ -1,0 +1,2 @@
+$('#pending-tasks').html("<h3>Pending</h3> <%= escape_javascript(render @list.pending_tasks) %>");
+$('#completed-tasks').html("<h3>Completed</h3> <%= escape_javascript(render @list.completed_tasks) %>");

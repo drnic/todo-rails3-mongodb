@@ -8,17 +8,20 @@
   <div class="content">
     <h2 class="title"><%= @list.name %></h2>
     <div class="inner">
-      <% @list.tasks.each do |task| %>
-        <p>
-          <%= form_for task, :url => task_path(:task_id => task), :remote => true do |f| %>
-            <%= f.check_box :done, :class => 'submittable' %>
-            <%= task.name %>
-          <% end %>
-        </p>
-      <% end %>
+      <div id="pending-tasks">
+        <h3>Pending</h3>
+        <%= render @list.pending_tasks %>
+      </div>
+      <div id="completed-tasks" %>
+        <h3>Completed</h3>
+        <%= render @list.completed_tasks %>
+      </div>
+      <br /><br />
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "Edit") + " Edit", edit_user_list_path(current_user, @list), :class => "button" %> 
         <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "Delete") + " Delete", user_list_path(current_user, @list), :method => "delete", :class => "button", :confirm => "Are you sur" %>
+        <span class="text_button_padding">or</span>
+        <%= link_to "Back", user_lists_path, :class => "text_button_padding link_button" %>
       </div>      
     </div>
   </div>

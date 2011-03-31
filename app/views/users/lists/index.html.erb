@@ -10,7 +10,14 @@
       <ul class="list">
         <% @lists.each do |list| %>
           <div class="item">
-            <p><%= link_to list.name, user_list_path(current_user, list) %></p>
+            <p>
+              <%= link_to list.name, user_list_path(current_user, list) %>
+              <% if !list.pending_tasks.empty? %>
+                (<%= list.pending_tasks.count %> left)
+              <% else %>
+                (completed)
+              <% end %>
+            </p>
           </div>
         <% end %>
       </ul>

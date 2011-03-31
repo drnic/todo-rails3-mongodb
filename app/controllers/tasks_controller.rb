@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   def update
     @list = List.find(params[:id])
     task = @list.tasks.find(params[:task_id])
-    task.update_attributes(:done => true)
+    task.update_attributes(:completed => !task.completed?)
     respond_with(current_user, @list)
   end
 

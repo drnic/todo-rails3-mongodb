@@ -3,10 +3,11 @@ Todo::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users do
-    resources :lists, :controller => 'users/lists'
+    resources :lists, :controller => 'users/lists' do
+      resources :tasks, :controller => 'users/lists/tasks', :only => :update
+    end
   end
   resources :lists
-  resources :tasks, :only => :update
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

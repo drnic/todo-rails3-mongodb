@@ -1,6 +1,0 @@
-<p>
-  <%= form_for task, :url => task_path(:task_id => task), :remote => true do |f| %>
-    <%= f.check_box :completed, :class => 'submittable' %>
-    <%= task.name %>
-  <% end %>
-</p>

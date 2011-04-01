@@ -22,7 +22,7 @@
           <% if user_signed_in? %>
             <li class="<%= (params[:controller] == "users/lists" ? "active" : nil) %>"><%= link_to 'My Lists', user_lists_path(current_user) %></li>
           <% end %>
-          <li class="<%= (params[:controller] == "lists" ? "active" : nil) %>"><%= link_to 'Lists', lists_path %></li>
+          <li class="<%= (params[:controller] == "lists" ? "active" : nil) %>"><%= link_to 'Public Lists', lists_path %></li>
         </ul>
       </div>
     </div>

@@ -3,6 +3,12 @@
   <%= f.text_field :name, :class => 'text_field' %>
   <span class="description">Ex: Things that i need to do today</span>
 </div>
+
+<div class="group">
+  <%= f.label :public, :class => :label %>
+  <%= f.check_box :public, :class => 'text_field' %>
+  <span class="description">Anyone can see public lists, but not change the list</span>
+</div>
  
 <div id="tasks">
   <%= f.fields_for :tasks do |builder| %>

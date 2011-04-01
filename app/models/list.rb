@@ -5,6 +5,7 @@ class List
   default_scope desc(:updated_at)
 
   field :name, :type => String
+  field :public, :type => Boolean, :default => false
   referenced_in :user
 
   embeds_many :tasks

@@ -3,24 +3,27 @@
     <ul class="wat-cf">
       <li class="first active"><%= link_to "Create a new list", new_user_list_path(current_user)  %></li>
     </ul>
-  </div>          
+  </div>
   <div class="content">
     <h2 class="title">My Lists</h2>
     <div class="inner">
-      <ul class="list">
-        <% @lists.each do |list| %>
-          <div class="item">
-            <p>
-              <%= link_to list.name, user_list_path(current_user, list) %>
-              <% if !list.pending_tasks.empty? %>
-                (<%= list.pending_tasks.count %> left)
-              <% else %>
-                (completed)
-              <% end %>
-            </p>
-          </div>
-        <% end %>
+      <ul>
+        <div class="inner">
+          <% @lists.each do |list| %>
+            <li>
+              <p>
+                <%= link_to list.name, user_list_path(current_user, list) %>
+                <% if !list.pending_tasks.empty? %>
+                  (<%= list.pending_tasks.count %> left)
+                <% else %>
+                  (completed)
+                <% end %>
+              </p>
+            </li>
+          <% end %>
+        </div>
       </ul>
     </div>
   </div>
 </div>
+

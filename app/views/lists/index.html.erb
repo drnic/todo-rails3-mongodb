@@ -1,39 +1,32 @@
-<div class="block">
+<div id="block-lists" class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", lists_path  %></li>
-      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_list_path %></li>
+      <li class="first active"><%= link_to "Public Lists", lists_path %></li>
     </ul>
-  </div>          
-  <div class="content">          
-    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Lists</h2>
+  </div>
+  <div class="content">
+    <h2 class="title">Public Lists</h2>
     <div class="inner">
-      <table class="table">
-        <tr>             
-          <th class="first">
-            <%= t("activerecord.attributes.list.name", :default => t("activerecord.labels.name", :default => "Name")) %>
-          </th>
-          <th class="last">&nbsp;</th>
-        </tr>
-        <% @lists.each do |list| -%>
-        <tr class="<%= cycle("odd", "even") %>">
-          <td>
-            <%= link_to list.name, list_path(list) %>
-          </td>
-          <td class="last">
-            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", list_path(list) %> |
-            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_list_path(list) %> |
-            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", list_path(list), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-          </td>
-        </tr>          
-        <% end -%>
-      </table>
-      <div class="actions-bar wat-cf">
-        <div class="actions">
-        </div>
-      </div>
+      <ul class="list">
+        <% @lists.each do |list| %>
+          <li>
+            <div class="left">
+              <%= image_tag(list.user.avatar_url(:thumb)) %>
+            </div>
+            <div class="public-item">
+              <p>
+                <%= link_to list.name, list_path(list) %>
+                <% if !list.pending_tasks.empty? %>
+                  (<%= list.pending_tasks.count %> left)
+                <% else %>
+                  (completed)
+                <% end %>
+              </p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
 
-<% content_for :sidebar, render(:partial => 'sidebar') -%>

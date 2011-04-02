@@ -10,11 +10,12 @@
   <span class="description">Anyone can see public lists, but not change the list</span>
 </div>
  
-<div id="tasks">
+<div id="tasks" class"group">
+  <%= f.label :tasks, :class => :label %>
   <%= f.fields_for :tasks do |builder| %>
     <%= render :partial => 'task_fields', :locals => { :f => builder } %>
   <% end %>
-  <p><%= link_to_add_fields "Add a task", f, :tasks, :tester => true %></p>
+  <p><%= link_to_add_fields "Add a task", f, :tasks %></p>
 </div>
        
 <div class="group navform wat-cf">

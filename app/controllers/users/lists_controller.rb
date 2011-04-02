@@ -8,8 +8,13 @@ class Users::ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
-    respond_with(current_user, @list)
+    begin
+      @list = List.find(params[:id])
+    rescue BSON::InvalidObjectId, Mongoid::Errors::DocumentNotFound
+      redirect_to root_url, :alert => "Attempt to access invalid list"
+    else
+      respond_with(current_user, @list)
+    end
   end
 
   def new
@@ -42,3 +47,4 @@ class Users::ListsController < ApplicationController
   end
 
 end
+

@@ -13,7 +13,7 @@ class List
   embeds_many :tasks
   accepts_nested_attributes_for :tasks, :allow_destroy => true
 
-  validates :name, :presence => true
+  validates :name, :user, :presence => true
 
   def add_watcher(user)
     watchers << user

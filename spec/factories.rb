@@ -8,3 +8,11 @@ Factory.define :valid_user, :class => User do |u|
   u.password_confirmation 'beatles'
 end
 
+Factory.define :list, :class => List do |l|
+  l.name "Things that i need to do today"
+  l.association :user, :factory => :valid_user
+end
+
+Factory.define :task, :class => Task do |t|
+  t.name "Drink a weiss beer"
+end

@@ -10,7 +10,7 @@ feature 'create user lists' do
   end
 
   background do
-    @user = Factory.create(:valid_user)
+    @user = Factory.create(:user)
   end
 
   scenario 'creating a new list with valid parameters' do

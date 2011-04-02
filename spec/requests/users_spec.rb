@@ -13,8 +13,8 @@ feature "signing up" do
     click_on 'Logout'
   end
 
-  background do
-    Factory.create(:valid_user)
+  before(:each) do
+    Factory.create(:user)
   end
 
   scenario 'signing with correct credentials' do

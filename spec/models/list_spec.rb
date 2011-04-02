@@ -29,14 +29,14 @@ describe List do
   end
 
   it "should add watcher" do
-    watcher = Factory.build(:valid_user)
+    watcher = Factory.build(:user)
     @list.add_watcher(watcher)
     @list.should have(1).watchers
     watcher.should have(1).watching
   end
 
   it "should remove watcher" do
-    watcher = Factory.build(:valid_user)
+    watcher = Factory.build(:user)
     @list.add_watcher(watcher)
     @list.remove_watcher(watcher)
     @list.should have(0).watchers

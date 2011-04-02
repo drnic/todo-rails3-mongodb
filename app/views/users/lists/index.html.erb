@@ -7,22 +7,26 @@
   <div class="content">
     <h2 class="title">My Lists</h2>
     <div class="inner">
-      <ul>
-        <div class="inner">
-          <% @lists.each do |list| %>
-            <li>
-              <p>
-                <%= link_to list.name, user_list_path(current_user, list) %>
-                <% if !list.pending_tasks.empty? %>
-                  (<%= list.pending_tasks.count %> left)
-                <% else %>
-                  (completed)
-                <% end %>
-              </p>
-            </li>
-          <% end %>
-        </div>
-      </ul>
+      <% if @lists.empty? %>
+        <p>You don't have any list yet. <%= link_to "Click here", new_user_list_path(current_user)  %> and create one now.</p>
+      <% else %>
+        <ul>
+          <div class="inner">
+            <% @lists.each do |list| %>
+              <li>
+                <p>
+                  <%= link_to list.name, user_list_path(current_user, list) %>
+                  <% if !list.pending_tasks.empty? %>
+                    (<%= list.pending_tasks.count %> left)
+                  <% else %>
+                    (completed)
+                  <% end %>
+                </p>
+              </li>
+            <% end %>
+          </div>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

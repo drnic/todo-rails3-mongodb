@@ -7,25 +7,29 @@
   <div class="content">
     <h2 class="title">Watching Lists</h2>
     <div class="inner">
-      <ul class="list">
-        <% @lists.each do |list| %>
-          <li>
-            <div class="left">
-              <%= image_tag(list.user.avatar_url(:thumb)) %>
-            </div>
-            <div class="public-item">
-              <p>
-                <%= link_to list.name, user_watching_path(current_user, list) %>
-                <% if !list.pending_tasks.empty? %>
-                  (<%= list.pending_tasks.count %> left)
-                <% else %>
-                  (completed)
-                <% end %>
-              </p>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+      <% if @lists.empty? %>
+        <p>You don't are watching any list yet. <%= link_to "Click here", lists_path  %> to find one.</p>
+      <% else %>
+        <ul class="list">
+          <% @lists.each do |list| %>
+            <li>
+              <div class="left">
+                <%= image_tag(list.user.avatar_url(:thumb)) %>
+              </div>
+              <div class="public-item">
+                <p>
+                  <%= link_to list.name, user_watching_path(current_user, list) %>
+                  <% if !list.pending_tasks.empty? %>
+                    (<%= list.pending_tasks.count %> left)
+                  <% else %>
+                    (completed)
+                  <% end %>
+                </p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

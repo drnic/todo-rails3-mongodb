@@ -19,11 +19,7 @@
       <div id="main-navigation">
         <ul class="wat-cf">
           <li class="<%= (params[:controller] == "home" ? "first active" : "first") %>"><%= link_to 'Home', root_path %></li>
-          <% if user_signed_in? %>
-            <li class="<%= (params[:controller] == "users/lists" ? "active" : nil) %>"><%= link_to 'My Lists', user_lists_path(current_user) %></li>
-            <li class="<%= (params[:controller] == "users/watching" ? "active" : nil) %>"><%= link_to 'Watching Lists', user_watching_index_path(current_user) %></li>
-          <% end %>
-          <li class="<%= (params[:controller] == "lists" ? "active" : nil) %>"><%= link_to 'Public Lists', lists_path %></li>
+          <%= render 'devise/menu/signed_in_items' %>
         </ul>
       </div>
     </div>
@@ -40,13 +36,14 @@
         <div id="footer">
           <div class="block">
             <p>Copyright &copy; <%= Time.now.year %> Todo.</p>
-          </div>      
+          </div>
         </div>
       </div>
       <div id="sidebar">
         <%= yield :sidebar %>
       </div>
-    </div>    
+    </div>
   </div>
 </body>
 </html>
+

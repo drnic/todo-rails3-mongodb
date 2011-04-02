@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-  before_filter :authenticate_user!, :except => :index
+  before_filter :authenticate_user!
   before_filter :unless_is_valid_list_and_not_private, :except => :index
 
   def index

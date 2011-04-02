@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <li class="<%= (params[:controller] == "users/lists" ? "active" : nil) %>"><%= link_to 'My Lists', user_lists_path(current_user) %></li>
+  <li class="<%= (params[:controller] == "users/watching" ? "active" : nil) %>"><%= link_to 'Watching Lists', user_watching_index_path(current_user) %></li>
+  <li class="<%= (params[:controller] == "lists" ? "active" : nil) %>"><%= link_to 'Public Lists', lists_path %></li>
+<% end %>
+

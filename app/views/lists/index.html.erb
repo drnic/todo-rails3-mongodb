@@ -7,25 +7,29 @@
   <div class="content">
     <h2 class="title">Public Lists</h2>
     <div class="inner">
-      <ul class="list">
-        <% @lists.each do |list| %>
-          <li>
-            <div class="left">
-              <%= image_tag(list.user.avatar_url(:thumb)) %>
-            </div>
-            <div class="public-item">
-              <p>
-                <%= link_to list.name, list_path(list) %>
-                <% if !list.pending_tasks.empty? %>
-                  (<%= list.pending_tasks.count %> left)
-                <% else %>
-                  (completed)
-                <% end %>
-              </p>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+      <% if @lists.empty? %>
+        <p>Nobody shared a list yet.</p>
+      <% else %>
+        <ul class="list">
+          <% @lists.each do |list| %>
+            <li>
+              <div class="left">
+                <%= image_tag(list.user.avatar_url(:thumb)) %>
+              </div>
+              <div class="public-item">
+                <p>
+                  <%= link_to list.name, list_path(list) %>
+                  <% if !list.pending_tasks.empty? %>
+                    (<%= list.pending_tasks.count %> left)
+                  <% else %>
+                    (completed)
+                  <% end %>
+                </p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

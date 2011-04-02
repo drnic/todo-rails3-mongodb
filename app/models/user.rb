@@ -10,6 +10,7 @@ class User
   mount_uploader :avatar, AvatarUploader
 
   references_many :lists, :dependent => :destroy
+  references_and_referenced_in_many :watching, :class_name => "List", :inverse_of => :watchers, :autosave => true, :dependent => :destroy
 
   validates :username, :name, :presence => true
   validates :username, :email, :uniqueness => {:case_sensitive => false}
@@ -17,5 +18,9 @@ class User
 
   attr_accessible :username, :name, :lists, :avatar, :email, 
     :password, :password_confirmation, :remember_me
+
+  def watching?(current_list)
+    !watching.select { |list| (list._id == current_list._id) }.empty?;
+  end
 
 end

@@ -24,9 +24,7 @@ feature 'create user lists' do
   end
 
   scenario 'creating a new list with invalid parameters' do
-    sign_in_as('john_lennon@beatles.com', 'beatles')
-    visit new_user_list_path(@user)
-    click_on 'Save'
-    page.should have_content('
+    pending
+  end
 
 end

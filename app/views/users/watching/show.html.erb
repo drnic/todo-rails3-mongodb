@@ -1,8 +1,8 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first"><%= link_to "Public Lists", lists_path  %></li>
-      <li class="active"><%= link_to "#{@list.name}", list_path %></li>
+      <li class="first"><%= link_to "Watching Lists", user_watching_index_path(current_user)  %></li>
+      <li class="active"><%= link_to "#{@list.name}", user_watching_path(current_user, @list) %></li>
     </ul>
   </div>
   <div class="content">
@@ -26,13 +26,9 @@
       </div>
       <br /><br />
       <div class="wat-cf">
-        <% if current_user.watching?(@list) %>
-          <%= link_to image_tag("web-app-theme/icons/tick.png", :alt => "Unwatch") + " Unwatch", list_watcher_path(@list), :method => :delete, :class => "button" %>
-        <% else %>
-          <%= link_to image_tag("web-app-theme/icons/tick.png", :alt => "Watch") + " Watch", list_watchers_path(@list), :method => :post, :class => "button" %>
-        <% end %>
+        <%= link_to image_tag("web-app-theme/icons/tick.png", :alt => "Unwatch") + " Unwatch", list_watcher_path(@list), :method => :delete, :class => "button" %>
         <span class="text_button_padding">or</span>
-        <%= link_to "Back", lists_path, :class => "text_button_padding link_button" %>
+        <%= link_to "Back", user_watching_index_path(current_user), :class => "text_button_padding link_button" %>
       </div>
     </div>
   </div>

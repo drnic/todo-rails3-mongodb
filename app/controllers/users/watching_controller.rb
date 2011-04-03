@@ -11,7 +11,8 @@ class Users::WatchingController < ApplicationController
     begin
       @list = List.find(params[:id])
     rescue BSON::InvalidObjectId, Mongoid::Errors::DocumentNotFound
-      redirect_to root_url, :alert => "Attempt to access invalid list"
+      logger.error "Attempt to access invalid list #{params[:id]}"
+      redirect_to root_url, :alert => "Invalid list"
     else
       respond_with(@list)
     end

@@ -2,6 +2,8 @@ class List
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  before_save :remove_empty_tasks
+
   default_scope desc(:updated_at)
 
   field :name, :type => String
@@ -33,4 +35,12 @@ class List
   def pending_tasks
     tasks.select { |task| !task.completed? }
   end
+
+  def remove_empty_tasks
+    if (!tasks.empty?)
+      tasks.each { |task| tasks.delete(task) unless !task.name.strip.empty? }
+    end
+  end
+
 end
+

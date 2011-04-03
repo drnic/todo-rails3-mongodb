@@ -25,6 +25,7 @@ class Users::ListsController < ApplicationController
 
   def edit
     @list = List.find(params[:id])
+    @list.tasks.build unless !@list.tasks.empty?
     respond_with(current_user, @list)
   end
 

@@ -3,6 +3,7 @@ class List
   include Mongoid::Timestamps
 
   before_save :remove_empty_tasks
+  after_save :remove_watchers_if_list_is_not_public
 
   default_scope desc(:updated_at)
 
@@ -39,6 +40,12 @@ class List
   def remove_empty_tasks
     if (!tasks.empty?)
       tasks.each { |task| tasks.delete(task) unless !task.name.strip.empty? }
+    end
+  end
+
+  def remove_watchers_if_list_is_not_public
+    if (!self.public? && !watchers.empty?)
+      watchers.nullify
     end
   end
 

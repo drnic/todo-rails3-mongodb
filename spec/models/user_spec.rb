@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before(:each) do
-    @user = Factory.build(:user)
+    @user = Factory.build(:john)
   end
 
   it "should not be created without username" do
@@ -22,8 +22,8 @@ describe User do
   end
 
   it "should require username to be unique" do
-    Factory.create(:user)
-    @user.email = "another@test.com"
+    Factory.create(:john)
+    @user.email = "paul@beatles.com"
     @user.should_not be_valid
   end
 
@@ -38,8 +38,8 @@ describe User do
   end
 
   it "should require email to be unique" do
-    Factory.create(:user)
-    @user.username = "another"
+    Factory.create(:john)
+    @user.username = "paul"
     @user.should_not be_valid
   end
 
@@ -58,3 +58,4 @@ describe User do
   end
 
 end
+

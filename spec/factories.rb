@@ -1,6 +1,6 @@
 require 'factory_girl'
 
-Factory.define :user, :class => User do |u|
+Factory.define :john, :class => User do |u|
   u.username 'john'
   u.name  'John Lennon'
   u.email 'john_lennon@beatles.com'
@@ -8,26 +8,37 @@ Factory.define :user, :class => User do |u|
   u.password_confirmation 'beatles'
 end
 
-Factory.define :test_user, :class => User do |u|
-  u.username 'test'
-  u.name  'Test'
-  u.email 'test@test.com'
-  u.password 'test123'
-  u.password_confirmation 'test123'
+Factory.define :paul, :class => User do |u|
+  u.username 'paul'
+  u.name  'Paul'
+  u.email 'paul@beatles.com'
+  u.password 'beatles'
+  u.password_confirmation 'beatles'
 end
 
 Factory.define :list, :class => List do |l|
   l.name "Things that i need to do today"
-  l.association :user, :factory => :user
+  l.association :user, :factory => :john
 end
 
 Factory.define :public_list, :class => List do |l|
   l.name "Things that i need to do today"
   l.public true
-  l.association :user, :factory => :user
+  l.association :user, :factory => :john
 end
 
-Factory.define :task, :class => Task do |t|
+Factory.define :completed_task, :class => Task do |t|
   t.name "Write an article"
+  t.completed true
+end
+
+Factory.define :pending_task, :class => Task do |t|
+  t.name "Read a book"
+  t.completed false
+end
+
+Factory.define :pending_task_with_empty_name, :class => Task do |t|
+  t.name nil
+  t.completed false
 end
 

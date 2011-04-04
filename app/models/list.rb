@@ -19,7 +19,7 @@ class List
   validates :name, :user, :presence => true
 
   def add_watcher(user)
-    watchers << user
+    watchers << user unless !self.public?
   end
 
   def remove_watcher(user)
@@ -39,7 +39,7 @@ class List
 
   def remove_empty_tasks
     if (!tasks.empty?)
-      tasks.each { |task| tasks.delete(task) unless !task.name.strip.empty? }
+      tasks.each { |task| tasks.delete(task) unless !task.name.nil? && !task.name.strip.empty? }
     end
   end
 

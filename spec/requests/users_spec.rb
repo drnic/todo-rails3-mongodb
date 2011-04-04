@@ -14,7 +14,7 @@ feature "signing up" do
   end
 
   before(:each) do
-    Factory.create(:user)
+    Factory.create(:john)
   end
 
   scenario 'signing with correct credentials' do
@@ -25,7 +25,7 @@ feature "signing up" do
   scenario "signing with incorrect credentials" do
     sign_in_as('john_lennon@beatles.com.br', 'ironmaiden')
     page.should have_content('Invalid email or password.')
-  end 
+  end
 
   scenario 'sign in and then sign out' do
     sign_in_as('john_lennon@beatles.com', 'beatles')
@@ -35,3 +35,4 @@ feature "signing up" do
   end
 
 end
+

@@ -10,7 +10,7 @@ feature 'watch lists' do
   end
 
   background do
-    @user = Factory.create(:test_user)
+    @user = Factory.create(:paul)
     @list = Factory.build(:public_list)
     @task = @list.tasks.build
     @task.name = "Write an article"
@@ -18,7 +18,7 @@ feature 'watch lists' do
   end
 
   scenario 'watch a public list', :js => true do
-    sign_in_as('test@test.com', 'test123')
+    sign_in_as('paul@beatles.com', 'beatles')
     visit lists_path
     click_link 'Things that i need to do today'
     click_on 'Watch'
@@ -28,7 +28,7 @@ feature 'watch lists' do
   end
 
   scenario 'unwatch a public list', :js => true do
-    sign_in_as('test@test.com', 'test123')
+    sign_in_as('paul@beatles.com', 'beatles')
     visit lists_path
     click_link 'Things that i need to do today'
     click_on 'Watch'

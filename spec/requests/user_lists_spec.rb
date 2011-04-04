@@ -10,7 +10,7 @@ feature 'create todo lists' do
   end
 
   background do
-    @user = Factory.create(:user)
+    @user = Factory.create(:john)
   end
 
   scenario 'creating a new list with empty tasks with valid parameters' do
@@ -44,7 +44,7 @@ feature 'create todo lists' do
   end
 
   scenario 'creating a new public list with a task', :js => true do
-    Factory.create(:test_user)
+    Factory.create(:paul)
     sign_in_as('john_lennon@beatles.com', 'beatles')
     visit new_user_list_path(@user)
     fill_in 'Name', :with => 'Things that i need to do today'
@@ -52,7 +52,7 @@ feature 'create todo lists' do
     fill_in 'list_tasks_attributes_0_name', :with => "Write an article."
     click_on 'Save'
     click_on 'Logout'
-    sign_in_as('test@test.com', 'test123')
+    sign_in_as('paul@beatles.com', 'beatles')
     visit lists_path
     page.should have_content('Things that i need to do today')
   end

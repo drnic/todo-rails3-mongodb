@@ -6,8 +6,11 @@ ImageMagick 6.4.9+
 
 To install this on EY Cloud, run the following:
 
+    ey recipes upload --apply
+
+These cookbooks were generated using the following commands:
+
     gem install engineyard-recipes
     ey-recipe init
     ey-recipes recipe imagemagick -p "media-gfx/imagemagick" -v "6.5.1.0" -u
-    ey recipes upload --apply
 

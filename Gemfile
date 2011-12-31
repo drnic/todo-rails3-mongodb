@@ -16,4 +16,6 @@ gem 'mongoid-rspec', :group => :test
 gem 'factory_girl_rails', :group => :test
 gem 'web-app-theme', '>= 0.6.2', :group => [:development, :test]
 
-gem 'heroku', '>= 1.19.1'
+# since EY currently requires a SQL DB to be selected
+gem "mysql2"
+gem "pg"

@@ -19,3 +19,5 @@ gem 'web-app-theme', '>= 0.6.2', :group => [:development, :test]
 # since EY currently requires a SQL DB to be selected
 gem "mysql2"
 gem "pg"
+
+gem "ey_config"

@@ -1,12 +1,13 @@
-To-do list desenvolvida em Rails 3 e MongoDB, algumas features:
+# Todo app (with user accounts) using MongoDB
 
-1) Criar nova conta com upload de foto;
-2) Autenticação;
-3) Após logado, o usuário pode criar uma lista, que pode ser pública ou privada;
-4) Ao criar uma lista, já podemos criar várias tarefas;
-5) Eu posso ver as listas públicas de outros usuários;
-6) Eu posso dar watch nas listas públicas de outros usuários;
-7) Eu posso ver todas as listas que eu dei watch;
+## Dependencies
 
-Algumas gems utilizadas: MongoID, Devise, Responders, Rspec, Capybara e Carrierwave.
+ImageMagick 6.4.9+
+
+To install this on EY Cloud, run the following:
+
+    gem install engineyard-recipes
+    ey-recipe init
+    ey-recipes recipe imagemagick -p "media-gfx/imagemagick" -v "6.5.1.0" -u
+    ey recipes upload --apply
 

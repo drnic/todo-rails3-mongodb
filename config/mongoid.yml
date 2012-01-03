@@ -16,4 +16,4 @@ test:
 
 # set these environment variables on your prod server
 production:
-  uri: <%= EY::Config.get(:mongohq, 'MONGOHQ_URL') || ENV['MONGOHQ_URL'] %>
+  uri: <%= EY::Config.get(:mongolab, 'MONGOLAB_URL') || EY::Config.get(:mongohq, 'MONGOHQ_URL') || ENV['MONGOHQ_URL'] %>

@@ -21,3 +21,5 @@ gem "mysql2"
 gem "pg"
 
 gem "ey_config"
+gem "statsmix"
+gem "airbrake"
